@@ -1,0 +1,165 @@
+﻿@model htmlHelper.Models.Cliente
+
+@{
+    ViewBag.Title = "Formulario";
+}
+<div class="col-md-12">
+    <div class="tab-content">
+        <div class="tab-pane active">
+
+            @using (Html.BeginForm("Formulario", "Home", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Staff Enfermera</h4>
+                    <hr />
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Nombre, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Apellido, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Apellido, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Edad, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Edad, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Correo, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Telefono, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Telefono, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Genero, null, htmlAttributes: new { @class = "control-label col-md-3", @id = "sexo" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownList("Genero", new SelectList(ViewBag.Generos, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="border:1px solid #000000;">
+                                <hr />
+                                <h4>Estado Civil:</h4>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.EstadoCivil, "Union Libre", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.EstadoCivil, new { htmlAttributes = new { @value = 0, @type = "radio", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.EstadoCivil, "Soltero", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.EstadoCivil, new { htmlAttributes = new { @value = 1, @type = "radio", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.EstadoCivil, "Casado", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.EstadoCivil, new { htmlAttributes = new { @value = 2, @name = "estado_civil", @type = "radio", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.EstadoCivil, "Viudo", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.EstadoCivil, new { htmlAttributes = new { @value = 3, @name = "estado_civil", @type = "radio", @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="border:1px solid #000000;">
+                                <hr />
+                                <h4>Hobbys</h4>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.Natacion, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Natacion, new { htmlAttributes = new { @type = "checkbox", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.Pelota, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Pelota, new { htmlAttributes = new { @type = "checkbox", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.Voleibol, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Voleibol, new { htmlAttributes = new { @type = "checkbox", @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(l => l.Baloncesto, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(m => m.Baloncesto, new { htmlAttributes = new { @type = "checkbox", @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <hr />
+                        <div class="form-group">
+                            <div class="margiv-top-10">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-check"></i> Guardar
+                                </button>
+                                @Html.ActionLink("Cancelar", "Index", null, htmlAttributes: new { @class = "btn default" })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
